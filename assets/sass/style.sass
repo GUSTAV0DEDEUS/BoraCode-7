@@ -139,18 +139,29 @@
         
         input
           display: none
+        
+        input:checked ~ label:before
+          @include mixins.font($weight: 700, $size: 1.4rem ,$color: variables.$secondary-text-color)
+          background: variables.$primary-color
+          
+        
+        input:checked ~ label:after
+          @include mixins.font($weight: 700, $size: 1.4rem ,$color: variables.$primary-color)
+          background: #6246EA
+          transition: 1s all
 
         label:before
           content: "Lista"
           display: inline-flex
           align-items: center
           justify-content: center
+          
 
           @include mixins.font($weight: 700, $size: 1.4rem ,$color: variables.$primary-color)
           text-transform: uppercase
 
           width: 86px
-          height: 32px
+          height: 32px          
           
           @include mixins.mobile2
            width: 100%
@@ -191,6 +202,10 @@
         border-radius: 10px
         border: 1px solid #EAEAEA
         @include mixins.imgs
+        transition: 1s all
+
+        &:hover
+          scale: 1.1
         
         .infos
           display: flex

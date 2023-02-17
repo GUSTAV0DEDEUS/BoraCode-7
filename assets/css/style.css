@@ -209,6 +209,17 @@
 .container-list .content .actions input {
   display: none;
 }
+.container-list .content .actions input:checked ~ label:before {
+  font: 700 1.4rem "Roboto";
+  color: #6246EA;
+  background: #fff;
+}
+.container-list .content .actions input:checked ~ label:after {
+  font: 700 1.4rem "Roboto";
+  color: #fff;
+  background: #6246EA;
+  transition: 1s all;
+}
 .container-list .content .actions label:before {
   content: "Lista";
   display: inline-flex;
@@ -264,6 +275,7 @@
   width: 100%;
   border-radius: 10px;
   border: 1px solid #EAEAEA;
+  transition: 1s all;
 }
 .container-list .wrapper .card .img-1 {
   background: linear-gradient(0deg, rgba(98, 70, 234, 0.2), rgba(98, 70, 234, 0.2)), url("../img/card1.jpg") no-repeat;
@@ -345,6 +357,9 @@
   height: 153px;
   background-size: cover;
   background-position: top center;
+}
+.container-list .wrapper .card:hover {
+  scale: 1.1;
 }
 .container-list .wrapper .card .infos {
   display: flex;
