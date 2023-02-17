@@ -1,0 +1,216 @@
+@use 'variables'
+@use 'mixins'
+
+
+* 
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  font-family: 'Roboto', sans-serif
+  font-size: 62.5% //10px
+
+.container
+  width: 100%
+  height: 100%
+  background: variables.$primary-color
+
+  &-search
+    @include mixins.flex($justify: center, $align: center, $direction: column)
+    height: 70vh
+    position: relative
+    background: variables.$secondary-color
+    
+    #top
+      @include mixins.position($top: 0, $left: 0, $right: initial, $bottom: initial, $translateY: 0)
+      @include mixins.mobile2
+        display: none
+    #bottom
+      @include mixins.position($top: inital, $left: initial, $right: 0, $bottom: 0, $translateY: 0)
+      @include mixins.mobile2
+        display: none
+    
+    .content
+      @include mixins.flex($justify: center, $align: center, $direction: column)
+      gap: 40px
+
+      .text
+        text-align: center
+        h4
+          @include mixins.font($weight: 500, $size: 1.6rem, $color: variables.$tertiary-color)
+          text-transform: uppercase
+          margin-bottom: 18px
+        h1
+          @include mixins.font($weight: 700, $size: 4.8rem, $color: variables.$primary-text-color)
+          @include mixins.mobile
+             @include mixins.font($weight: 700, $size: 2rem, $color: variables.$primary-text-color)         
+          width: 25ch     
+          span
+            @include mixins.font($weight: 700, $size: 4.8rem, $color: variables.$secondary-text-color)
+            @include mixins.mobile
+             @include mixins.font($weight: 700, $size: 2rem, $color: variables.$secondary-text-color)   
+      
+      .inputs
+        width: 160%
+        padding: 40px
+        background: variables.$primary-color
+        display: flex
+        gap: 24px
+        @include mixins.responsive
+          width: 100% 
+          gap: 10px     
+        @include mixins.mobile
+          width: 100%
+          flex-direction: column
+          align-items: center
+
+        .input
+          width: calc( 80%/2 - 24px )
+          height: 48px
+          position: relative
+          @include mixins.flex($justify: center, $align: center, $direction: row)
+          background: #F4F4FF
+          border-radius: 5px
+
+          @include mixins.mobile
+            width: 100%
+          
+          label
+            @include mixins.position($top: 50%, $left: 10px, $right: inital, $bottom: initial, $translateY:-50%)
+            color: variables.$tertiary-color
+            
+            i
+              font-size: 2.4rem
+          
+          input
+            background: transparent
+            outline: 0
+            border: 0
+            width: 100%
+            padding-left: 6rem
+
+            @include mixins.font($weight: 700, $size: 1.6rem, $color: variables.$input-text-color)
+            @include mixins.responsive
+               @include mixins.font($weight: 700, $size: 1.4rem, $color: variables.$input-text-color)
+               padding-left: 4rem
+          
+          #open
+            @include mixins.position($top: 50%, $left: initial, $right: 10px, $bottom: initial, $translateY:-50%)
+            font-size: 1rem
+            color: #858793
+        
+        .btn
+          width: calc(20% - 24px)
+          background: variables.$secondary-text-color
+          border: 0
+          outline: 0
+          border-radius: 5px
+          @include mixins.font($weight: 700, $size: 1.6rem, $color: variables.$primary-color)
+          text-transform: uppercase
+          transition: .4s
+
+          @include mixins.mobile
+            width: 80%
+            padding: 15px 0
+
+          &:hover, &:focus
+            cursor: pointer
+            filter: grayscale(50%)
+
+  &-list
+    display: flex
+    flex-direction: column
+    gap: 40px
+    padding: 5% 10%
+
+    .content
+      @include mixins.flex($justify: space-between, $align: center, $direction: row)
+      
+      h2
+        @include mixins.font($weight: 700, $size: 3.2rem, $color: variables.$primary-text-color)
+        @include mixins.mobile
+          @include mixins.font($weight: 700, $size: 1.8rem, $color: variables.$primary-text-color)
+
+      
+      .actions
+        padding: 8px
+        border: 1px solid #EAEAEA
+        border-radius: 6px
+        display: flex
+        
+        input
+          display: none
+
+        label:before
+          content: "Lista"
+          display: inline-flex
+          align-items: center
+          justify-content: center
+
+          @include mixins.font($weight: 700, $size: 1.4rem ,$color: variables.$primary-color)
+          text-transform: uppercase
+
+          width: 86px
+          height: 32px
+          
+          @include mixins.mobile2
+           width: 100%
+
+          background: #6246EA
+          border-radius: 5px
+        
+        label:after
+          content: "Maps"
+          display: inline-flex
+          align-items: center
+          justify-content: center
+
+          @include mixins.font($weight: 700, $size: 1.4rem ,$color: variables.$secondary-text-color)
+          text-transform: uppercase
+
+          width: 86px
+          height: 32px
+
+          @include mixins.mobile2
+           width: 100%
+
+          border-radius: 5px
+          
+    .wrapper
+      display: grid
+      grid-template-columns: repeat(3, 1fr)
+      justify-content: center
+      gap: 32px
+      @include mixins.mobile
+        grid-template-columns: repeat(2, 1fr)
+      @include mixins.mobile2
+        grid-template-columns: repeat(1, 1fr)
+
+
+      .card
+        width: 100%
+        border-radius: 10px
+        border: 1px solid #EAEAEA
+        @include mixins.imgs
+        
+        .infos
+          display: flex
+          flex-direction: column
+          gap: 1.6rem
+          padding: 1.6rem
+
+          h3
+            @include mixins.font($weight: 700, $size: 2rem, $color: variables.$primary-text-color)
+          p
+            @include mixins.font($weight: 400, $size: 1.6rem, $color: rgba(0, 0, 0, .75))
+          a
+            display: flex
+            align-items: center
+            gap: 8px
+            text-decoration: none
+            @include  mixins.font($weight: 400,$size: 1.6rem, $color:rgba(0, 0, 0, .75))
+
+            i
+              font-size: 2.4rem
+              color: variables.$tertiary-color
+
+
